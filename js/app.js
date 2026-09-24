@@ -52,9 +52,7 @@ console.log("Creando " + numEscaparates + " escaparates");
 
 // Solicitar al usuario la hora que desea mostrar
 const hora = prompt("Ingrese la hora (1-12):");
-if (hora >= 1 && hora <= 12) {
-  document.getElementById("reloj").innerHTML = relojesHoras[hora];
-} else {
+if (hora < 1 || hora > 12) {
   alert("Por favor, ingrese una hora válida entre 1 y 12.");
 }
 
@@ -67,6 +65,8 @@ if (numCoches < 0) {
 }
 
 console.log("Creando " + numCoches + " coches");
+
+
 
 
 
