@@ -133,7 +133,7 @@ function generarPagina(myObject) {
 // Preguntamos al usuario cuantas calles quiere crear
 
 const numCalles = parseInt(prompt("Ingrese el número de calles que desea mostrar:"));
-if (numCalles < 0) {
+if (numCalles < 0 || Number.isInteger(numCalles) === false) {
   alert("Por favor, ingrese un número válido de calles.");
 }
 
@@ -142,7 +142,7 @@ if (numCalles < 0) {
 for (let i = 0; i < numCalles; i++) {
   // Solicitar al usuario el número de carteles, puertas y coches a mostrar
   const numCarteles = prompt("Ingrese el número de carteles que desea mostrar:");
-  if (numCarteles < 0) {
+  if (numCarteles < 0 || Number.isInteger(parseInt(numCarteles)) === false) {
     alert("Por favor, ingrese un número válido de carteles.");
   }
 
@@ -150,13 +150,13 @@ for (let i = 0; i < numCalles; i++) {
 
   // Solicitar al usuario el número de la puerta a mostrar
   let numPuerta = parseInt(prompt("Ingrese el número de la puerta que desea mostrar:"));
-  if (numPuerta < 0) {
+  if (numPuerta < 0 || Number.isInteger(numPuerta) === false) {
     alert("Por favor, ingrese un número válido de puerta.");
   }
 
   // Solicitar al usuario el número de puertas a mostrar
   const numPuertas = parseInt(prompt("Ingrese el número de puertas que desea mostrar:"));
-  if (numPuertas < 0) {
+  if (numPuertas < 0 || Number.isInteger(numPuertas) === false) {
     alert("Por favor, ingrese un número válido de puertas.");
   }
 
@@ -164,7 +164,7 @@ for (let i = 0; i < numCalles; i++) {
 
   // Solicitar al usuario el número de escaparates a mostrar
   let numEscaparates = parseInt(prompt("Inserte el número de escaparates que desea mostrar:"));
-  if (numEscaparates < 0) {
+  if (numEscaparates < 0 || Number.isInteger(numEscaparates) === false) {
     alert("Por favor, ingrese un número válido de escaparates.");
   }
 
@@ -172,21 +172,21 @@ for (let i = 0; i < numCalles; i++) {
 
   // Solicitar al usuario la hora que desea mostrar
   const hora = prompt("Ingrese la hora (1-12):");
-  if (hora < 1 || hora > 12) {
+  if (hora < 1 || hora > 12 || Number.isInteger(parseInt(hora)) === false) {
     alert("Por favor, ingrese una hora válida entre 1 y 12.");
   }
 
   console.log("Creando un reloj apuntando a las " + hora);
 
   // Solicitar al usuario el color del semáforo a mostrar
-  const colorSemaforo = prompt("Ingrese el color del semáforo (rojo, amarillo, verde):");
+  const colorSemaforo = prompt("Ingrese el color del semáforo (rojo, amarillo, verde):").toLowerCase();
   if (colorSemaforo !== "rojo" && colorSemaforo !== "amarillo" && colorSemaforo !== "verde") {
     alert("Por favor, ingrese un color válido para el semáforo (rojo, amarillo, verde).");
   }
 
   // Solicitar al usuario el número de coches a mostrar
   const numCoches = prompt("Ingrese el número de coches que desea mostrar:");
-  if (numCoches < 0) {
+  if (numCoches < 0 || Number.isInteger(parseInt(numCoches)) === false) {
     alert("Por favor, ingrese un número válido de coches.");
   }
 
