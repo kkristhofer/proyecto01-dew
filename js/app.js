@@ -25,7 +25,7 @@ const relojesHoras = {
   12: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100" height="100"><circle cx="100" cy="100" r="85" fill="#ffffff" stroke="#2c3e50" stroke-width="6"/><line x1="100" y1="23" x2="100" y2="33" stroke="#2c3e50" stroke-width="4" stroke-linecap="round"/><line x1="177" y1="100" x2="167" y2="100" stroke="#2c3e50" stroke-width="4" stroke-linecap="round"/><line x1="100" y1="177" x2="100" y2="167" stroke="#2c3e50" stroke-width="4" stroke-linecap="round"/><line x1="23" y1="100" x2="33" y2="100" stroke="#2c3e50" stroke-width="4" stroke-linecap="round"/><line x1="100" y1="100" x2="100" y2="56" stroke="#2c3e50" stroke-width="6" stroke-linecap="round"/><line x1="100" y1="100" x2="100" y2="38" stroke="#2c3e50" stroke-width="4" stroke-linecap="round"/><circle cx="100" cy="100" r="5" fill="#e74c3c"/></svg>`
 };
 
-var Calle= function(numCarteles, numPuertas, numPuerta, numEscaparates, hora, colorSemaforo, numCoches, doc) {
+var Calle= function(numCarteles, numPuertas, numPuerta, numEscaparates, hora, colorSemaforo, numCoches, doc) { // Creamos el objeto
   this.doc = doc || document;
   this.numCarteles = numCarteles;
   this.numPuertas = numPuertas;
@@ -34,6 +34,9 @@ var Calle= function(numCarteles, numPuertas, numPuerta, numEscaparates, hora, co
   this.hora = hora;
   this.colorSemaforo = colorSemaforo;
   this.numCoches = numCoches;
+
+  // Creamos los métodos a llamar para crear la calle
+
   this.generarCarteles = function() {
     for (let i = 0; i < this.numCarteles; i++) {
     this.doc.write(`<div class="cartel"><img class="poster" src="img/poster.jpg" alt="Cartel ${i + 1}"></div>`);
@@ -117,6 +120,8 @@ var Calle= function(numCarteles, numPuertas, numPuerta, numEscaparates, hora, co
 
 }
 
+// A esta función se le pasa un objeto y llama a los atributos para crear la calle
+
 function generarPagina(myObject) {
   myObject.generarCarteles();
   myObject.generarPuertas();
@@ -125,10 +130,14 @@ function generarPagina(myObject) {
   myObject.generarCoches();
 }
 
+// Preguntamos al usuario cuantas calles quiere crear
+
 const numCalles = parseInt(prompt("Ingrese el número de calles que desea mostrar:"));
 if (numCalles < 0) {
   alert("Por favor, ingrese un número válido de calles.");
 }
+
+// Aquí situamos todos los prompts para guardar la información que le asignaremos a nuestro objeto dentro de un for loop que no parara hasta crear las calles pedidas por el usuario
 
 for (let i = 0; i < numCalles; i++) {
   // Solicitar al usuario el número de carteles, puertas y coches a mostrar
@@ -183,12 +192,14 @@ for (let i = 0; i < numCalles; i++) {
 
   console.log("Creando " + numCoches + " coches");
 
-  var nombreObjeto = "miCalle" + i.toString();
+  var nombreObjeto = "miCalle" + i.toString(); //Esto lo que hace es que a cada iteracion le asigna un nombre nuevo a la calle
 
   nombreObjeto = new Calle(numCarteles, numPuertas, numPuerta, numEscaparates, hora, colorSemaforo, numCoches);
 
+
+  //Este if lo uso para que, si el usuario solo pide una calle, no genere una página extra dejando una vacía, y en caso contrario procede a abrir las páginas extras necesarias
   if (i == 0) {
-    generarPagina(nombreObjeto);
+    generarPagina(nombreObjeto); // Llamamos a la funcion para generar la calle
   } else {
     var myWindow = window.open("", "_blank");
     nombreObjeto = new Calle(numCarteles, numPuertas, numPuerta, numEscaparates, hora, colorSemaforo, numCoches, myWindow.document);
